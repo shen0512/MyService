@@ -17,6 +17,7 @@
 		0957F940287185BE0094A585 /* MyServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0957F93F287185BE0094A585 /* MyServiceTests.m */; };
 		0957F94A287185BE0094A585 /* MyServiceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0957F949287185BE0094A585 /* MyServiceUITests.m */; };
 		0957F94C287185BE0094A585 /* MyServiceUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0957F94B287185BE0094A585 /* MyServiceUITestsLaunchTests.m */; };
+		0957F95A287188D70094A585 /* ServiceTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0957F958287188D70094A585 /* ServiceTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,10 @@
 		0957F945287185BE0094A585 /* MyServiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyServiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0957F949287185BE0094A585 /* MyServiceUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyServiceUITests.m; sourceTree = "<group>"; };
 		0957F94B287185BE0094A585 /* MyServiceUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyServiceUITestsLaunchTests.m; sourceTree = "<group>"; };
+		0957F958287188D70094A585 /* ServiceTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceTools.m; sourceTree = "<group>"; };
+		0957F959287188D70094A585 /* ServiceTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceTools.h; sourceTree = "<group>"; };
+		0971B1132871C664003C46E6 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		0971B1142871C70C003C46E6 /* IMG_2884.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2884.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,8 @@
 		0957F917287185BB0094A585 = {
 			isa = PBXGroup;
 			children = (
+				0971B1132871C664003C46E6 /* readme.md */,
+				0971B1142871C70C003C46E6 /* IMG_2884.PNG */,
 				0957F922287185BB0094A585 /* MyService */,
 				0957F93E287185BE0094A585 /* MyServiceTests */,
 				0957F948287185BE0094A585 /* MyServiceUITests */,
@@ -104,6 +111,8 @@
 		0957F922287185BB0094A585 /* MyService */ = {
 			isa = PBXGroup;
 			children = (
+				0957F959287188D70094A585 /* ServiceTools.h */,
+				0957F958287188D70094A585 /* ServiceTools.m */,
 				0957F923287185BB0094A585 /* AppDelegate.h */,
 				0957F924287185BB0094A585 /* AppDelegate.m */,
 				0957F926287185BB0094A585 /* SceneDelegate.h */,
@@ -266,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0957F95A287188D70094A585 /* ServiceTools.m in Sources */,
 				0957F92B287185BB0094A585 /* ViewController.m in Sources */,
 				0957F925287185BB0094A585 /* AppDelegate.m in Sources */,
 				0957F936287185BD0094A585 /* main.m in Sources */,
@@ -450,6 +460,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -477,6 +488,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
