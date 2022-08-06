@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol ServiceToolsDelegate <NSObject>
 @optional
 - (void)getPostResult:(NSHTTPURLResponse*) response :(NSDictionary*)data;
+- (void)getProgress:(NSInteger)progress;
 
 @end
 @interface ServiceTools : NSObject
@@ -18,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init:(BOOL)skipSSL;
 - (void)doPost:(NSString*)url :(NSString*)param :(NSDictionary*)jsonBody;
+- (void)doPostImg:(NSString*)url :(NSString*)param :(NSString*)msg :(NSData*)data :(NSString*)filename;
 
 @end
 

@@ -57,8 +57,8 @@
 		0957F94B287185BE0094A585 /* MyServiceUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyServiceUITestsLaunchTests.m; sourceTree = "<group>"; };
 		0957F958287188D70094A585 /* ServiceTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceTools.m; sourceTree = "<group>"; };
 		0957F959287188D70094A585 /* ServiceTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceTools.h; sourceTree = "<group>"; };
+		0969B996289EB40300ABE0B6 /* IMG_2946.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2946.PNG; sourceTree = "<group>"; };
 		0971B1132871C664003C46E6 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
-		0971B1142871C70C003C46E6 /* IMG_2884.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2884.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				0971B1132871C664003C46E6 /* readme.md */,
-				0971B1142871C70C003C46E6 /* IMG_2884.PNG */,
+				0969B996289EB40300ABE0B6 /* IMG_2946.PNG */,
 				0957F922287185BB0094A585 /* MyService */,
 				0957F93E287185BE0094A585 /* MyServiceTests */,
 				0957F948287185BE0094A585 /* MyServiceUITests */,
