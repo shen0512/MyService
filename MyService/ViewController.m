@@ -7,8 +7,9 @@
 
 #import "ViewController.h"
 #import "ServiceTools.h"
+#import "UploadData.h"
 
-@interface ViewController ()<UITableViewDelegate, UITableViewDataSource, ServiceToolsDelegate>
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) UILabel *titleLabel;
@@ -116,7 +117,6 @@
     
     // service tool
     self.myService = [[ServiceTools alloc] init:YES];
-    self.myService.delegate = self;
 }
 
 #pragma mark button target
@@ -158,14 +158,14 @@
 - (void)uploadClick:(id)sender{
     NSLog(@"upload click");
     
-//    if(self.alert){
-//        [self.alert setTitle:@""];
-//        [self.alert setMessage:@""];
-//    }else{
+    if(self.alert){
+        [self.alert setTitle:@""];
+        [self.alert setMessage:@""];
+    }else{
         self.alert = [UIAlertController alertControllerWithTitle:@""
                                                          message:@""
                                                   preferredStyle:UIAlertControllerStyleAlert];
-//    }
+    }
     
     if(self.ipAddress == nil || [self.ipAddress.text isEqualToString:@""]){
         [self.alert setTitle:@"Error"];
@@ -194,11 +194,14 @@
     }else{
         [self.alert setTitle:@"file upload"];
         [self.alert setMessage:@""];
+        NSArray *uploadFiles = [self makeUploadData];
+        
         [self presentViewController:self.alert animated:YES completion:^(){
             
         [self.myService doPostFiles:[self.ipAddress.text stringByAppendingPathComponent:@"fileUpload"]
-                                   :[self getFileRoot]
-                                   :[self.selectedFiles allValues]
+                                   :uploadFiles
+                           progress:^(NSInteger precentage){
+                                    [self.alert setMessage:[NSString stringWithFormat:@"progress: %ld%%", precentage]];}
                          completion:^(NSDictionary* response){
                             dispatch_async(dispatch_get_main_queue(), ^(){
                                 [self.alert dismissViewControllerAnimated:NO completion:^(){
@@ -231,18 +234,10 @@
     
 }
 
-
 #pragma mark keyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
-}
-
-#pragma mark ServiceTool delegate
--(void)getProgress:(NSInteger)progress{
-    dispatch_async(dispatch_get_main_queue(), ^(){
-        [self.alert setMessage:[NSString stringWithFormat:@"progress: %ld%%", progress]];
-    });
 }
 
 #pragma mark TableView delegate
@@ -295,7 +290,6 @@
 }
 
 #pragma mark file
-
 - (NSString*)getDocumentPath{
     /**
      @brief get document path
@@ -345,6 +339,16 @@
     }
     
     return path;
+}
+
+- (NSArray*)makeUploadData{
+    NSMutableArray *uploadFiles = [NSMutableArray new];
+    for(NSString *filename in [self.selectedFiles allValues]){
+        [uploadFiles addObject:[[UploadData alloc] init:[[self getFileRoot] stringByAppendingPathComponent:filename]
+                                                       :filename]];
+    }
+    
+    return uploadFiles;
 }
 
 @end
