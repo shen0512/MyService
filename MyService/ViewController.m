@@ -195,35 +195,37 @@
         [self.alert setTitle:@"file upload"];
         [self.alert setMessage:@""];
         [self presentViewController:self.alert animated:YES completion:^(){
-            NSDictionary *response = [self.myService doPostFiles:self.ipAddress.text
-                                       :@"fileUpload"
-                                       :[self getFileRoot]
-                                       :[self.selectedFiles allValues]
-            ];
+            
+        [self.myService doPostFiles:[self.ipAddress.text stringByAppendingPathComponent:@"fileUpload"]
+                                   :[self getFileRoot]
+                                   :[self.selectedFiles allValues]
+                         completion:^(NSDictionary* response){
+                            dispatch_async(dispatch_get_main_queue(), ^(){
+                                [self.alert dismissViewControllerAnimated:NO completion:^(){
+                                    UIAlertController *alert2 = [UIAlertController alertControllerWithTitle:@""
+                                                                                                    message:@""
+                                                                                             preferredStyle:UIAlertControllerStyleAlert];
+                                    UIAlertAction* okAction2 = [UIAlertAction actionWithTitle:@"OK"
+                                                                                        style:UIAlertActionStyleDefault
+                                                                                      handler:nil];
+                                    [alert2 addAction:okAction2];
+                                                    
+                                    if([response[@"status"] isKindOfClass:[NSString class]] && [response[@"status"] isEqualToString:@"accept"]){
+                                        NSLog(@"upload success");
+                                        [alert2 setTitle:@"upload success"];
+                                    }else{
+                                        NSLog(@"upload error");
+                                        [alert2 setTitle:@"upload error"];
+                                        [alert2 setMessage:[NSString stringWithFormat:@"error code: %@", response[@"status"]]];
+                                    }
+                                    
+                                    [self presentViewController:alert2 animated:YES completion:nil];}];
+                            });
+
+                    }
+        ];
             
             
-            [self.alert dismissViewControllerAnimated:NO completion:^(){
-                UIAlertController *alert2 = [UIAlertController alertControllerWithTitle:@""
-                                                                                message:@""
-                                                                         preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction* okAction2 = [UIAlertAction actionWithTitle:@"OK"
-                                                                   style:UIAlertActionStyleDefault
-                                                                 handler:^(UIAlertAction * action){
-                                                                    [alert2 dismissViewControllerAnimated:NO completion:nil];}
-                ];
-                [alert2 addAction:okAction2];
-                
-                if([response[@"status"] isKindOfClass:[NSString class]] && [response[@"status"] isEqualToString:@"accept"]){
-                    NSLog(@"upload success");
-                    [alert2 setTitle:@"upload success"];
-                }else{
-                    NSLog(@"upload error");
-                    [alert2 setTitle:@"upload error"];
-                    [alert2 setMessage:[NSString stringWithFormat:@"error code: %@", response[@"status"]]];
-                }
-                
-                [self presentViewController:alert2 animated:YES completion:nil];
-            }];
         }];
     }
     

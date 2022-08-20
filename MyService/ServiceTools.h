@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
+typedef void (^getP)(NSInteger pr);
+
 @protocol ServiceToolsDelegate <NSObject>
 -(void) getProgress:(NSInteger)progress;
 @end
@@ -15,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) id <ServiceToolsDelegate> delegate;
 
 - (instancetype)init:(BOOL)skipSSL;
-- (NSDictionary*)doPostFiles:(NSString*)url :(NSString*)param :(NSString*)fileRoot :(NSArray*)files;
+- (void)doPostFiles:(NSString*)url :(NSString*)fileRoot :(NSArray*)files completion:(void(^)(NSDictionary*))completion;
+- (void)doPostFiles2:(NSString*)url :(NSString*)fileRoot :(NSArray*)files completion:(void(^)(NSDictionary*))completion;
 @end
 
 NS_ASSUME_NONNULL_END
